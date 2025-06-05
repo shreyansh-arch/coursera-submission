@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio website of Shreyansh Yadav" />
+  <meta name="description" content="Portfolio website of Shreyansh Yadav">
   <title>Shreyansh Yadav | Web Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f0f4f8;
+      background-color: #f4f7fa;
       color: #333;
     }
 
@@ -22,15 +20,49 @@
       text-align: center;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+    nav {
+      background-color: #002244;
+      padding: 10px 20px;
     }
 
-    header p {
-      margin-top: 10px;
-      font-style: italic;
-      font-size: 1.2rem;
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav li {
+      margin: 0 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 24px;
+      background: none;
+      color: white;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      .menu-icon {
+        display: block;
+      }
     }
 
     section {
@@ -40,9 +72,9 @@
     }
 
     h2 {
-      color: #003366;
       border-bottom: 2px solid #ccc;
       padding-bottom: 5px;
+      color: #003366;
     }
 
     .skills ul {
@@ -68,12 +100,37 @@
       font-weight: bold;
     }
 
+    .project {
+      margin: 20px 0;
+    }
+
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content img {
+      max-width: 90%;
+      height: auto;
+    }
+
+    .modal-content button {
+      margin-top: 10px;
+      padding: 8px 16px;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
       background-color: #003366;
       color: white;
-      margin-top: 40px;
     }
   </style>
 </head>
@@ -83,12 +140,22 @@
     <p>Web Developer & Creative Thinker</p>
   </header>
 
-  <section class="about">
+  <nav>
+    <button class="menu-icon" aria-label="Toggle Menu">&#9776;</button>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="about">
     <h2>About Me</h2>
     <p>Hello! I’m Shreyansh Yadav, a passionate web developer focused on creating clean, responsive, and user-friendly websites. I enjoy transforming ideas into elegant code.</p>
   </section>
 
-  <section class="skills">
+  <section id="skills" class="skills">
     <h2>Skills</h2>
     <ul>
       <li>HTML5 & CSS3</li>
@@ -98,7 +165,23 @@
     </ul>
   </section>
 
-  <section class="contact">
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="filter">
+      <button onclick="filterProjects('web')">Web</button>
+      <button onclick="filterProjects('software')">Software</button>
+    </div>
+    <div class="project web">
+      <img src="project1.jpg" alt="Web Project" onclick="openLightbox(this)">
+      <p>Responsive Portfolio Website</p>
+    </div>
+    <div class="project software">
+      <img src="project2.jpg" alt="Software Project" onclick="openLightbox(this)">
+      <p>Grade Management System</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
     <h2>Contact Me</h2>
     <button onclick="showEmail()">Click to Reveal Email</button>
     <p id="email"></p>
@@ -109,9 +192,49 @@
   </footer>
 
   <script>
+    function toggleMenu() {
+      const nav = document.querySelector("nav ul");
+      nav.classList.toggle("show");
+    }
+
+    document.querySelector(".menu-icon").addEventListener("click", toggleMenu);
+
+    document.querySelectorAll("nav a").forEach(anchor => {
+      anchor.addEventListener("click", event => {
+        event.preventDefault();
+        const targetId = anchor.getAttribute("href").substring(1);
+        document.getElementById(targetId).scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    function filterProjects(category) {
+      document.querySelectorAll(".project").forEach(project => {
+        project.style.display = project.classList.contains(category) ? "block" : "none";
+      });
+    }
+
+    function openLightbox(image) {
+      const modal = document.createElement("div");
+      modal.classList.add("lightbox");
+      modal.innerHTML = `
+        <div class="modal-content">
+            <img src="${image.src}" alt="${image.alt}">
+            <button onclick="closeModal()">Close</button>
+        </div>`;
+      document.body.appendChild(modal);
+    }
+
+    function closeModal() {
+      document.querySelector(".lightbox").remove();
+    }
+
     function showEmail() {
       document.getElementById("email").textContent = "shreyansh@example.com";
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("JavaScript Loaded Successfully");
+    });
   </script>
 </body>
 </html>
