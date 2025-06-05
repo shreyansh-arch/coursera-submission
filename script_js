@@ -1,0 +1,4 @@
+function showEmail() {
+  const emailElement = document.getElementById("email");
+  emailElement.textContent = "shreyansh@example.com";
+}
