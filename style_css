@@ -1,99 +1,120 @@
-/* Sci-Fi Theme General Styles */
+/* General Styles */
 body {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(90deg, #080808, #1e1e1e);
-    color: #00ffea;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
 }
 
 /* Header */
 header {
-    background: linear-gradient(45deg, #0066ff, #001f3f);
-    padding: 20px;
+    background-color: #004080;
+    padding: 40px 20px;
     text-align: center;
-    box-shadow: 0px 0px 10px #00ffea;
-}
-
-.menu-icon {
-    display: none;
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: #00ffea;
-    cursor: pointer;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 /* Navigation */
+nav {
+    background-color: #003366;
+}
+
 nav ul {
     list-style: none;
-    padding: 0;
+    margin: 0;
+    padding: 10px 0;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 25px;
 }
 
 nav ul li {
-    padding: 10px 20px;
-    border: 2px solid #00ffea;
-    border-radius: 5px;
-    background: transparent;
-    box-shadow: 0px 0px 5px #00ffea;
-    transition: all 0.3s ease-in-out;
+    padding: 8px 15px;
 }
 
 nav ul li a {
-    color: #00ffea;
+    color: #fff;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
 }
 
-nav ul li:hover {
-    background: #00ffea;
-    color: black;
-    transform: scale(1.1);
+nav ul li a:hover,
+nav ul li a:focus {
+    color: #ffcc00;
+    outline: none;
+}
+
+/* Responsive Menu Icon */
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+/* Sections */
+section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
 /* About Me */
-#about-me {
+#about {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     text-align: center;
-    padding: 40px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border: 2px solid #00ffea;
-    box-shadow: 0px 0px 15px #00ffea;
-    border-radius: 10px;
-    margin: 20px auto;
-    max-width: 800px;
+    color: #222;
 }
 
-/* Projects Section */
+/* Skills */
+#skills ul {
+    list-style: disc inside;
+    max-width: 400px;
+    margin: 0 auto;
+    padding-left: 0;
+    color: #444;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* Projects */
 #projects {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 20px;
+    gap: 25px;
 }
 
 .project {
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
-    padding: 20px;
-    margin: 15px;
-    box-shadow: 0px 0px 15px #00ffea;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     max-width: 300px;
-    transition: transform 0.3s ease-in-out;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .project:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
-figure img {
+.project img {
     max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    cursor: pointer;
-    filter: drop-shadow(0px 0px 10px #00ffea);
+    border-radius: 6px;
+    margin-bottom: 15px;
 }
 
 /* Lightbox */
@@ -101,86 +122,90 @@ figure img {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: flex; justify-content: center; align-items: center;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 }
 
 .modal-content img {
     max-width: 80%;
-    border: 2px solid #00ffea;
-    box-shadow: 0px 0px 20px #00ffea;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .modal-content button {
-    background: #00ffea;
-    color: black;
+    margin-top: 20px;
+    padding: 10px 20px;
     border: none;
-    padding: 10px;
+    background-color: #004080;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 .modal-content button:hover {
-    background: #0066ff;
+    background-color: #00264d;
 }
 
-/* Skills Section */
-#skills ul {
-    list-style: none;
-    padding: 0;
-}
-
-#skills ul li::before {
-    content: "🛠 ";
-    color: #00ffea;
-    font-weight: bold;
-}
-
-/* Contact Form */
-form {
-    display: flex;
-    flex-direction: column;
+/* Contact Section */
+#contact {
+    background-color: #fff;
     max-width: 500px;
-    margin: auto;
-    border: 2px solid #00ffea;
-    padding: 20px;
-    box-shadow: 0px 0px 10px #00ffea;
+    margin: 40px auto;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    color: #222;
 }
 
-input, textarea, button {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 2px solid #00ffea;
-    background-color: black;
-    color: #00ffea;
-}
-
-button {
-    background: #00ffea;
-    font-size: 16px;
+#contact button {
+    padding: 12px 25px;
+    background-color: #004080;
+    color: white;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background 0.3s;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background: #0066ff;
+#contact button:hover {
+    background-color: #00264d;
+}
+
+#email {
+    margin-top: 15px;
+    font-weight: 600;
+    color: #004080;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #003366;
+    color: #fff;
+    font-size: 0.9rem;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .menu-icon {
-        display: block;
-    }
-
     nav ul {
-        display: none;
         flex-direction: column;
         align-items: center;
+        display: none;
     }
-
     nav ul.show {
         display: flex;
+    }
+
+    .menu-icon {
+        display: block;
     }
 
     #projects {
